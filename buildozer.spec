@@ -1,36 +1,19 @@
-name: Build APK
-on:
-  workflow_dispatch:
+[app]
+package.name = calculator
+package.domain = org.calculator
+source.dir = .
+source.include_exts = py,png,jpg
+source.main = main.py
+package.version = 0.1
+requirements = python3,kivy
 
-jobs:
-  build:
-    runs-on: ubuntu‑latest
-    steps:
-      - uses: actions/checkout@v4
+android.minapi = 24
+android.api = 32
+android.ndk = 25c
+android.archs = arm64-v8a
+android.accept_sdk_license = True
+android.androidx = True
+android.permissions = WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
 
-      - name: Set up Python
-        uses: actions/setup‑python@v5
-        with:
-          python‑version: "3.11"
-
-      - name: Install system dependencies
-        run: |
-          sudo apt‑get update
-          sudo apt‑get install ‑y git zip unzip openjdk‑17‑jdk autoconf libtool pkg‑config zlib1g‑dev libncurses‑dev cmake libffi‑dev libssl‑dev
-
-      - name: Install buildozer
-        run: |
-          python3 ‑m venv venv
-          source venv/bin/activate
-          pip install buildozer cython
-
-      - name: Build APK
-        run: |
-          source venv/bin/activate
-          buildozer android debug
-
-      - name: Upload APK artifact
-        uses: actions/upload‑artifact@v4
-        with:
-          name: calculator‑apk
-          path: bin/*.apk
+log_level = 2
+orientation = portrait
