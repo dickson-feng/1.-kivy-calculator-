@@ -27,7 +27,6 @@ jobs:
 
       - name: Briefcase build android
         run: |
-          briefcase new --no-input
           briefcase build android
           briefcase package android --release
 
