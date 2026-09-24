@@ -2,7 +2,7 @@ name: Build APK
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: # 手动点击运行
+  workflow_dispatch:
 
 jobs:
   build:
@@ -28,7 +28,8 @@ jobs:
 
     - name: Build APK
       run: |
-        buildozer android debug
+        buildozer android debug > build_log.txt 2>&1
+        cat build_log.txt
         ls -la bin/
 
     - name: Upload APK artifact
