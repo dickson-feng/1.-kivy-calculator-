@@ -2,6 +2,7 @@
 formal_name = "calculator"
 description = "Kivy Calculator"
 authors = ["Your Name <you@example.com>"]
+license = "MIT"
 sources = ["main.py"]
 requires = ["kivy"]
 
