@@ -8,6 +8,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Increase swap memory
+      run: |
+        sudo fallocate -l 4G /swapfile
+        sudo chmod 600 /swapfile
+        sudo mkswap /swapfile
+        sudo swapon /swapfile
+
     - name: Checkout code
       uses: actions/checkout@v4
 
@@ -28,7 +35,7 @@ jobs:
 
     - name: Build APK
       id: build_apk
-      continue-on-error: true  # 就算打包失败，也继续往下执行上传日志
+      continue-on-error: true
       run: |
         buildozer android debug > build_log.txt 2>&1
         ls -la bin/
