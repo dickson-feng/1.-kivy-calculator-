@@ -2,7 +2,7 @@ name: Build APK
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: # 支持手动点击运行
+  workflow_dispatch: # 手动点击运行
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
 
     - name: Build APK
       run: |
-        buildozer android debug deploy run
+        buildozer android debug
         ls -la bin/
 
     - name: Upload APK artifact
