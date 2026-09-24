@@ -1,10 +1,11 @@
 [app]
+title = Calculator
 package.name = calculator
 package.domain = org.calculator
 source.dir = .
 source.include_exts = py,png,jpg
 source.main = main.py
-package.version = 0.1
+version = 0.1
 requirements = python3,kivy
 
 android.minapi = 24
