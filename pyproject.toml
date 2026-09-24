@@ -1,0 +1,9 @@
+[tool.briefcase.app.calculator]
+formal_name = "calculator"
+description = "Kivy Calculator"
+authors = ["Your Name <you@example.com>"]
+sources = ["main.py"]
+requires = ["kivy"]
+
+[tool.briefcase.app.calculator.android]
+form_factor = "mobile"
